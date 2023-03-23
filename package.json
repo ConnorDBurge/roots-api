@@ -6,7 +6,7 @@
   "repository": "https://github.com/ConnorDBurge/roots-api.git",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/local.mjs",
+    "dev": "nodemon src/local.js",
     "invoke": "serverless invoke local -f graphql -p query.json",
     "deploy": "yarn invoke && serverless deploy"
   },

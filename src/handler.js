@@ -3,7 +3,7 @@ import {
   handlers,
 } from "@as-integrations/aws-lambda";
 
-import { server } from "./server.mjs";
+import { server } from "./server.js";
 
 export const handler = startServerAndCreateLambdaHandler(
   server,
