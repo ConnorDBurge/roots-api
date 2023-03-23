@@ -1,0 +1,17 @@
+{
+  "name": "roots-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/ConnorDBurge/roots-api.git",
+  "license": "MIT",
+  "scripts": {
+    "invoke": "serverless invoke local -f graphql -p query.json",
+    "deploy": "yarn invoke && serverless deploy"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.5.0",
+    "@as-integrations/aws-lambda": "^2.0.1",
+    "graphql": "^16.6.0"
+  }
+}
