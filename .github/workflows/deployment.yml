@@ -14,6 +14,7 @@ on:
 
 jobs:
   Build:
+    name: Build, Install, Test
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +30,7 @@ jobs:
         run: npm ci
 
   Deploy-Staging:
+    name: "Deploy: Staging"
     needs: Build
     runs-on: ubuntu-latest
     if: (github.ref == 'refs/heads/master' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
@@ -55,6 +57,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   Deploy-Production:
+    name: "Deploy: Production"
     needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production' && github.ref == 'refs/heads/master'
