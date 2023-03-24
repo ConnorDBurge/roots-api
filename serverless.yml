@@ -2,7 +2,7 @@ service: roots-api
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: ${opt:stage}
+  stage: ${opt:stage, staging}
   httpApi:
     cors: true
 functions:

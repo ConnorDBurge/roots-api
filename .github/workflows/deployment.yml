@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: "Target environment (staging or production)"
+        type: environment
+        description: Environment
         required: true
         default: "staging"
 
@@ -59,7 +60,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production' && github.ref == 'refs/heads/master'
     environment:
       name: production
-      url: "https://381nrk4947.execute-api.us-east-1.amazonaws.com/graphql"
+      url: https://doo1z471si.execute-api.us-east-1.amazonaws.com/graphql
 
     steps:
       - name: Checkout code
