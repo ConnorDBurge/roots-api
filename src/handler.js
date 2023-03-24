@@ -5,7 +5,11 @@ import {
 
 import { server } from "./server.js";
 
-export const handler = startServerAndCreateLambdaHandler(
-  server,
-  handlers.createAPIGatewayProxyEventV2RequestHandler()
-);
+export const handler = startServerAndCreateLambdaHandler(server, {
+  context: async ({ event, context }) => {
+    return {
+      lambdaEvent: event,
+      lambdaContext: context,
+    };
+  },
+});
