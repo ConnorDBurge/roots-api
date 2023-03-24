@@ -1,8 +1,8 @@
-service: apollo-lambda
+service: roots-api
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage}
   httpApi:
     cors: true
 functions:
