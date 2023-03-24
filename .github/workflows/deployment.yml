@@ -33,7 +33,7 @@ jobs:
     if: (github.ref == 'refs/heads/master' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
     environment:
       name: staging
-      url: https://95sck20zek.execute-api.us-east-1.amazonaws.com/graphql
+      url: https://8v9u4dvn1b.execute-api.us-east-1.amazonaws.com/graphql
 
     steps:
       - name: Checkout code
@@ -59,6 +59,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production' && github.ref == 'refs/heads/master'
     environment:
       name: production
+      url: "https://381nrk4947.execute-api.us-east-1.amazonaws.com/graphql"
 
     steps:
       - name: Checkout code
