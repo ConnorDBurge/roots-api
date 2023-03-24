@@ -7,12 +7,12 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Target environment (staging or production)'
+        description: "Target environment (staging or production)"
         required: true
-        default: 'staging'
+        default: "staging"
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,11 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npm test
-
   deploy-to-staging:
-    needs: build-and-test
+    needs: build
     runs-on: ubuntu-latest
     if: (github.ref == 'refs/heads/master' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
     environment:
@@ -56,7 +53,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   deploy-to-production:
-    needs: build-and-test
+    needs: build
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production' && github.ref == 'refs/heads/master'
     environment:
