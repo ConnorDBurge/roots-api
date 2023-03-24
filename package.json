@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "nodemon src/local.js",
     "invoke": "serverless invoke local -f graphql -p query.json",
-    "deploy": "yarn invoke && serverless deploy"
+    "deploy": "yarn invoke && serverless deploy --stage staging"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
