@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: 16
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Deploy to Staging
         run: npx serverless deploy --stage staging
         env:
@@ -70,6 +73,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Deploy to Production
         run: npx serverless deploy --stage production
